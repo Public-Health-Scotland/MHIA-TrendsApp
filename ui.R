@@ -216,9 +216,7 @@ fluidPage(
            
            mainPanel(
              width = 12,
-             plotlyOutput("adm_plot",
-                          width = "1090px",
-                          height = "650px"),
+             phs_spinner("adm_plot"),
              br(),
              br(),
              HTML("<button data-toggle = 'collapse' href = '#adm_table_l'
@@ -315,9 +313,7 @@ fluidPage(
              # In the main panel of the discharges graph, insert the graph, the...
              # 'Show/hide table' button, and the discharges table.
              
-             plotlyOutput("dis_plot",
-                          width = "1090px",
-                          height = "650px"),
+             phs_spinner("dis_plot"),
              br(),
              br(),
              HTML("<button data-toggle = 'collapse' href = '#dis_table_l'
@@ -402,9 +398,7 @@ fluidPage(
              # In the main panel of the discharges graph, insert the graph, the...
              # 'Show/hide table' button, and the discharges table.
              
-             plotlyOutput("dis_type_scot_plot",
-                          width = "1090px",
-                          height = "650px"),
+             phs_spinner("dis_type_scot_plot"),
              br(),
              br(),
              HTML("<button data-toggle = 'collapse' href = '#dis_type_table_l'
@@ -494,9 +488,7 @@ fluidPage(
              # In the main panel of the discharges graph, insert the graph, the...
              # 'Show/hide table' button, and the discharges table.
              
-             plotlyOutput("dis_group_hb_plot",
-                          width = "1090px",
-                          height = "650px"),
+             phs_spinner("dis_group_hb_plot"),
              br(),
              br(),
              HTML("<button data-toggle = 'collapse' href = '#dis_group_table_l'
@@ -589,9 +581,7 @@ fluidPage(
              # In the main panel of the length of stay graph, insert the graph,...
              # the 'Show/hide table' button, and the length of stay table.
              
-             plotlyOutput("los_plot",
-                          width = "1090px",
-                          height = "650px"),
+             phs_spinner("los_plot"),
              br(),
              br(),
              HTML("<button data-toggle = 'collapse' href = '#los_table_l'

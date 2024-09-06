@@ -36,6 +36,7 @@
 library("shiny") # interactivity
 library("dplyr") # easier variable manipulation
 library("tidyr") # pivot function
+library('purrr') # for map function to load multiple files
 library("plotly") # graphs 
 library("DT") # insert tables under the graphs
 library("readr") # read CSV files into R
@@ -43,9 +44,15 @@ library("shinyWidgets") # filters
 library("magrittr") # pipe operators
 library("stringr") # easier string manipulation
 library("shinyjs")
+library('shinycssloaders')
 # library("shinymanager") # apply password protection to the app
 
 
+### Load setup files ----
+
+# sourcing functions created for app (see functions folder)
+list.files("functions") %>%
+  map(~ source(paste0("functions/", .)))
 
 #############################################################
 
