@@ -1,3 +1,5 @@
+## Files for git to ignore
+
 # User session files not to be uploaded
 .Rhistory
 .Rapp.history
