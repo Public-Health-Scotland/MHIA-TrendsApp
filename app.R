@@ -236,9 +236,18 @@ server <- function(input, output, session) {
     }
   )
   
-  # End of Server.
+  # Keep dashboard active indefinitely to meet accessibility requirements
+  # (Keep at the end of server)
+  auto_invalidate <- reactiveTimer(10000)
+  observe({
+    auto_invalidate()
+    cat(".")
+  })
   
-}
+} # End of server
+
+# Sets language right at the top of source (required this way for screen readers)
+attr(ui, "lang") = "en"
 
 
 # Launch the page ----

@@ -427,7 +427,7 @@ fluidPage(
                           provider decreased from 570 to 385."),
                  tags$li("Between 2019/20 and 2020/21, patients discharging themselves 
                          against medical advice saw roughly a 23.4% increase from 1,005 to 1,240. 
-                         This number has fallen to 945 in 2022/23")
+                         This number has fallen to 945 in 2022/23.")
                )
              ),
              
