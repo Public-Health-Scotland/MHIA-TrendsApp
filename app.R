@@ -3,15 +3,16 @@
 # Type: Data visualisation
 # Output: Shiny application
 # Written on: RStudio
-# Written for: R version 3.6.1 
+# Written for: R version 4.1.2 
 #
-# Original Author: Nikos Alexandrou
-# Modified: 16/07/2019
+# Original Author: Nikos Alexandrou (2019)
 # Latest Author: Alex Bruce
-# Latest Edit: Sept 2024
+# Latest Edit: Nov 2024
 # Changes:
 #
 # 2024 (AB) - added to github, changed 'segments' to 'modules'
+# - Moved summary text to csv file
+# - Moved data prep to separate file
 #
 # 2023 (AB) - complete remodel to source ui from a separate ui.R file and server
 # files from individual section files saved in folder called 'modules'
@@ -22,7 +23,7 @@
 #
 # Updated pub date, max year and file to import
 #
-# Grab a cup of tea if making changes, it's a long file.
+# Grab a cup of tea/coffee if making changes, it'll make it easier.
 #
 # Approximate run time: < 1 minute
 # Description: This syntax creates a Shiny page that provides an overview of...
