@@ -238,17 +238,8 @@ fluidPage(
              br(),
              p(tags$b("Main trend (Scotland):"),
                tags$ul(
-                 tags$li(
-                   "Over the past 26 years, admissions for mental health conditions 
-                   in non-psychiatric specialties have tripled, from 9,450 to 29,205. 
-                   At the same time, admissions in psychiatric specialties have decreased 
-                   from 32,010 to 18,475. Over the same period total admissions 
-                   in any speciality have increased from 41,460 to 47,680 with a 
-                   peak of 51,720 in 2019/20."),
-                 tags$li(
-                   "Total admissions in any specialty for mental health conditions 
-                   reached its lowest point in 2009/10, at 34,645. That number is 
-                   roughly 37.6% higher (47,680) in 2022/23.")
+                 tags$li(adm_sum_text_1),
+                 tags$li(adm_sum_text_2)
                )
              ),
              
@@ -335,17 +326,8 @@ fluidPage(
              br(),
              p(tags$b("Main trend (Scotland):"),
                tags$ul(
-                 tags$li(
-                   "Over the past 26 years, discharges for mental health conditions 
-                   from non-psychiatric specialties have more than tripled, from 
-                   9,485 to 29,660. At the same time, discharges from psychiatric 
-                   specialties have decreased from 32,300 to 18,490. Over the same 
-                   period total discharges in any speciality have increased from 
-                   41,785 to 48,150 with a peak of 52,550 in 2019/20."),
-                 tags$li(
-                   "Total discharges in any specialty for mental health conditions 
-                   reached its lowest point in 2009/10, at 34,760. That number is 
-                   roughly 38.5% higher (48,150) in 2022/23.")
+                 tags$li(dis_sum_text_1),
+                 tags$li(dis_sum_text_2)
                )
              ),
              
@@ -420,14 +402,8 @@ fluidPage(
              br(),
              p(tags$b("Main trend (Scotland):"),
                tags$ul(
-                 tags$li("Since 2012/13, transfers within the same Health Board/Health 
-                          Care Provider have grown steadily to become the largest 
-                          discharge type overall, more than doubling from 8,020 to 21,895 per year.
-                          Over the same period transfers to another health board/healthcare 
-                          provider decreased from 570 to 385."),
-                 tags$li("Between 2019/20 and 2020/21, patients discharging themselves 
-                         against medical advice saw roughly a 23.4% increase from 1,005 to 1,240. 
-                         This number has fallen to 945 in 2022/23.")
+                 tags$li(dis_type_sum_text_1),
+                 tags$li(dis_type_sum_text_2)
                )
              ),
              
@@ -509,15 +485,10 @@ fluidPage(
              br(),
              br(),
              p(tags$b("Main trend (Scotland):"),
-               tags$summary("Since 2012/13 the biggest changes in discharges can be found 
-                          within 2 Health Boards, in the regular discharge type:"),
+               tags$summary(dis_group_sum_text_1),
                tags$ul(
-                 tags$li("NHS Greater Glasgow and Clyde shows the the largest 
-                         increase in regular discharges, almost doubling from 
-                         8,885 to 14,435 between 2012/13 and 2022/23."),
-                 tags$li("NHS Forth Valley shows the next largest increase in 
-                         regular discharges, increasing from 1,385 to 3,490 
-                         between 2012/13 and 2022/23, with a sharp rise in 2019/20.")
+                 tags$li(dis_group_sum_text_2),
+                 tags$li(dis_group_sum_text_3)
                )
              ),
              
@@ -603,12 +574,7 @@ fluidPage(
              br(),
              p(tags$b("Main trend (Scotland):"),
                tags$ul(
-                 tags$li("Between the years 1997/98 and 2022/23, there has generally been 
-                         a reduction in the time spent as a psychiatric inpatient. This 
-                         is due in part to the increase in community-based care. The 
-                         number of mental health stays in non-psychiatric facilities has 
-                         increased since 1997/98 but most of these stays are quite short 
-                         (between 1 and 7 days).")
+                 tags$li(los_sum_text_1)
                ),
                
                br(),
