@@ -98,12 +98,13 @@ output$dis_type_scot_plot <- renderPlotly({
              paste0(
                "<b>",
                "Discharge type '",
-               input$dis_type_scot_input, "' in Scotland,",
+               input$dis_type_scot_input, "'", 
                "<br>",
+               " in Scotland, by financial year, ",
                first(as.vector(dis_type_scot_new()$fyear)),
                " - ",
                last(as.vector(dis_type_scot_new()$fyear)),
-               ", by financial year",
+               
                "<br>",
                "</b>"
              ),
