@@ -1,4 +1,4 @@
-################################################################################
+####
 # Name: Trend data
 # Type: Data visualisation
 # Output: Shiny application
@@ -29,10 +29,10 @@
 # Description: This syntax creates a Shiny page that provides an overview of...
 # inpatient admissions, discharges, discharge types, discharge groups 
 # and length of stay.
-################################################################################
+####
 
 
-#Load the necessary libraries.
+# Load necessary libraries.
 
 library("shiny") # interactivity
 library("readr") # read in rds files
@@ -49,13 +49,14 @@ library("shinyjs")
 library('shinycssloaders')
 library("shinymanager") # apply password protection to the app
 
-#############################################################
+
+####
 
 # SECTION 1: SETUP ----
 
-#############################################################
+####
 
-### Load setup files ----
+## Load setup files ----
 
 # sourcing functions created for app (see functions folder)
 list.files("functions") %>%
@@ -70,25 +71,24 @@ source("data_preparation.R")
 # credentials <- readRDS("admin/credentials.rds")
 
 
+####
 
-#############################################################
+# SECTION 2: USER INTERFACE ----
 
-#### SECTION 2: USER INTERFACE ####
+####
 
-#############################################################
-
-### [Source the ui file] ----
+## [Source the ui file] ----
 ui <- source('ui.R', local = TRUE)$value
 # Needs $value after source expression for ui to prevent 'TRUE' being printed 
 # at the bottom of the app following R Shiny evaluation sequence
 
 
 
-#############################################################
+####
 
-#### SECTION 3: SERVER ####
+# SECTION 3: SERVER ----
 
-#############################################################
+####
 
 server <- function(input, output, session) {
   
@@ -101,36 +101,30 @@ server <- function(input, output, session) {
   # reactiveValuesToList(res_auth)
   # })
 
-  #### [Source Server files] ----
-  ###* Admissions server ----
+  ## [Source Server files] ----
+  ### Admissions server ----
   source('modules/server_01_admissions.R', local = TRUE)
   
-  ##* Discharges server ----
+  ### Discharges server ----
   source('modules/server_02_discharges.R', local = TRUE)
   
-  ##* Discharge Types server ----
+  ### Discharge Types server ----
   source('modules/server_03_discharge_types.R', local = TRUE)
   
-  ##* Discharge Groups server ----
+  ### Discharge Groups server ----
   source('modules/server_04_discharge_groups.R', local = TRUE)
   
-  ##* Length of Stay server ----
+  ### Length of Stay server ----
   source('modules/server_05_los.R', local = TRUE)  
   
              
-  ################ [ Glossary Server ] ################
+  ## [ Glossary Server ] ----
 
   # We have prepared a glossary to help the user understand the graphs and...
   # tables more easily.
   
-  ### 1 - Create a download button for the glossary ####
+  ### Create a download button for the glossary ----
   
-  # output$download_glossary_one <- downloadHandler(
-  #   filename = 'glossary.pdf',
-  #   content = function(file) {
-  #     file.copy(paste0(filepath, "downloads/MHIA Glossary.pdf"), file)
-  #   }
-  # )
   output$download_glossary_one <- downloadHandler(
     filename = 'glossary.pdf',
     content = function(file) {
@@ -138,6 +132,7 @@ server <- function(input, output, session) {
     }
   )
   
+  ## Always active chunk ----
   # Keep dashboard active indefinitely to meet accessibility requirements
   # (Keep at the end of server)
   auto_invalidate <- reactiveTimer(10000)
@@ -146,12 +141,13 @@ server <- function(input, output, session) {
     cat(".")
   })
   
-} # End of server
+} # End of server ----
 
+# Set app language ----
 # Sets language right at the top of source (required this way for screen readers)
 attr(ui, "lang") = "en"
 
 
-# Launch the page ----
+# Launch app ----
 
 shinyApp(ui = ui, server = server)
