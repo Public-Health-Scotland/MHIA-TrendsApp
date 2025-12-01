@@ -66,10 +66,21 @@ fluidPage(
            
            # Explain the content of the page, and hyperlink the charts.
            
-           p("The graphs below provide an overview of inpatient admissions and 
-             discharges in Scotland over time. The data can be viewed at a 
-             Scotland, health board, or hospital level. The page also includes 
-             a length of stay analysis broken down by health board."),
+           p("The graphs below present an overview of inpatient admissions and 
+             discharges where mental health conditions have been recorded 
+             in Scottish NHS inpatient facilities over time. Data are 
+             included for patients receiving inpatient care in psychiatric facilities 
+             (Scottish Morbidity Record 04, SMR04) and patients receiving care 
+             as inpatients and day cases in non-psychiatric (acute) hospitals 
+             (Scottish Morbidity Record 01, SMR01) where the patient was recorded 
+             as having a mental health condition."),
+           
+           p("The data can be viewed at a Scotland, Health Board, or hospital level."),
+           
+           p("This page also includes discharge type analysis at Scotland level,
+             discharge group analysis at Health Board level and 
+             a length of stay analysis broken down by Health Board."),
+           
            
            p("Contents:",
              tags$ul(
@@ -136,16 +147,24 @@ fluidPage(
                         .glossaryone { color: #FFFFFF; }")
            ),
            
-           p(br(), 
-             HTML(paste0(
-               'The data used to create the below graphs can be downloaded in CSV 
-                format from the  
-                <b> <a href = "https://www.opendata.nhs.scot/dataset/mental-health-inpatient-activity">Scottish Health and Social Care Open Data Portal</a></b>.'
-             ))),
+           br(), 
+           br(),
+           
+           p("The data used to create the below graphs can be downloaded in CSV 
+                format from the ", 
+               tags$a("Scottish Health and Social Care Open Data Portal.", 
+                      href = "https://www.opendata.nhs.scot/dataset/mental-health-inpatient-activity", 
+                      target = "_blank")
+           ),
+
            
            p("If you experience any problems using this dashboard, or have 
              any questions relating to the data, please contact us at: ",
-             HTML(paste0('<b> <a href = "mailto:phs.mentalhealthanalytics@phs.scot">phs.mentalhealthanalytics@phs.scot</a></b>.'))),
+             #tags$a("phs.mentalhealthanalytics@phs.scot",
+              #      href = "mailto:phs.mentalhealthanalytics@phs.scot")
+             #),
+             HTML(paste0('<b> <a href = "mailto:phs.mentalhealthanalytics@phs.scot">phs.mentalhealthanalytics@phs.scot</a></b>.'))
+             ),
            
            p(tags$b(
              "Note: Statistical disclosure control has been applied to protect
@@ -154,9 +173,9 @@ fluidPage(
              1 decimal place. As a result, the figures presented here may not be 
              additive and may differ to previous sources of information. For 
              more information, please refer to the ",
-             tags$a(
+             tags$a("PHS Statistical Disclosure Control Protocol.",
                href = "https://publichealthscotland.scot/publications/public-health-scotland-statistical-disclosure-protocol/", 
-               "PHS Statistical Disclosure Control Protocol."
+               target = "_blank"
              ), 
              ""
            )),
