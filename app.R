@@ -35,6 +35,7 @@
 #Load the necessary libraries.
 
 library("shiny") # interactivity
+library("readr") # read in rds files
 library("dplyr") # easier variable manipulation
 library("tidyr") # pivot function
 library('purrr') # for map function to load multiple files

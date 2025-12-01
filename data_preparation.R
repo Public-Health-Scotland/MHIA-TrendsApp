@@ -7,20 +7,20 @@
 
 ### 1 -  Publication Date variable to define file3path ----
 # MUST BE UPDATED EACH TIME WE PUBLISH
-pub_date <- "2024_December"
+pub_date <- "2025_December"
 
 ### 2 - Define min and max years ---- 
 # must be updated each time we publish 
 min_year <- 1997
-max_year <- 2023
+max_year <- 2024
 
 ### File Imports & transformations ----
 
 ### Trend Data - Discharges & Admissions ----
 
 # Import the file that will be used to create the admission and discharge graphs.
-activity.by.hospital <- arrow::read_parquet(
-  paste0("data/MHIA_DataTrends_TrendsApp_",pub_date,".parquet"))
+activity.by.hospital <- read_rds(
+  paste0("data/MHIA_DataTrends_TrendsApp_",pub_date,".rds"))
 
 # activity.by.hospital <- readRDS("data/SMR01SMR04_MH_trend_data_long.rds")
 
@@ -59,8 +59,8 @@ act_disch_measures <- activity.discharges %>% distinct(Trend_Type) %>%
 ### Trend Data - Discharge Type ----
 
 # Read in the discharge_type data
-activity.dis.type <- arrow::read_parquet(
-  paste0("data/MHIA_DischargeType_TrendsApp_",pub_date,".parquet"))
+activity.dis.type <- read_rds(
+  paste0("data/MHIA_DischargeType_TrendsApp_",pub_date,".rds"))
 
 # Store certain variables in each dataset as objects, to be used as selections...
 # in the app's filters.
@@ -96,8 +96,8 @@ dis.type.location.hb <- activity.dis.type.hb %>%
 ### Trend Data - Length of Stay ----
 
 # Now import the file that will be used to create the length of stay graph.
-length.of.stay <- arrow::read_parquet(
-  paste0("data/MHIA_LengthOfStay_TrendsApp_",pub_date,".parquet"))
+length.of.stay <- read_rds(
+  paste0("data/MHIA_LengthOfStay_TrendsApp_",pub_date,".rds"))
 
 
 # Finally, store the following two variables as objects to be used as...
