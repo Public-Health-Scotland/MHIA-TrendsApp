@@ -22,8 +22,6 @@ max_year <- 2024
 activity.by.hospital <- read_rds(
   paste0("data/MHIA_DataTrends_TrendsApp_",pub_date,".rds"))
 
-# activity.by.hospital <- readRDS("data/SMR01SMR04_MH_trend_data_long.rds")
-
 
 # Then, split this file in two -one file for discharges, one for admissions.
 # In each file, delete the columns you don't need.
