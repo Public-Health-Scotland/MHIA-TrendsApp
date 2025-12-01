@@ -138,13 +138,14 @@ output$adm_plot <- renderPlotly({
     
     layout(title = 
              paste0(
-               "<b>", 
-               input$adm_measure_type, " in ", input$adm_location, ",",   
+               "<b>", "Number of ", input$adm_measure_type, 
+               " in ", input$adm_location, ",",
                "<br>",
+               " by financial year, ",
                first(as.vector(adm_new()$year)), 
                " - ", 
                last(as.vector(adm_new()$year)),
-               ", by financial year",
+               
                "<br>",
                "</b>"
              ),
