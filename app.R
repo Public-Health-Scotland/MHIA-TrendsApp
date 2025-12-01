@@ -46,7 +46,7 @@ library("magrittr") # pipe operators
 library("stringr") # easier string manipulation
 library("shinyjs")
 library('shinycssloaders')
-# library("shinymanager") # apply password protection to the app
+library("shinymanager") # apply password protection to the app
 
 #############################################################
 
@@ -91,7 +91,7 @@ ui <- source('ui.R', local = TRUE)$value
 
 server <- function(input, output, session) {
   
-  # ##* Shinymanager authorisation - password protection ----
+  # # ##* Shinymanager authorisation - password protection ----
   # res_auth <- secure_server(
   # check_credentials = check_credentials(credentials)
   # )
@@ -124,10 +124,16 @@ server <- function(input, output, session) {
   
   ### 1 - Create a download button for the glossary ####
   
+  # output$download_glossary_one <- downloadHandler(
+  #   filename = 'glossary.pdf',
+  #   content = function(file) {
+  #     file.copy(paste0(filepath, "downloads/MHIA Glossary.pdf"), file)
+  #   }
+  # )
   output$download_glossary_one <- downloadHandler(
     filename = 'glossary.pdf',
     content = function(file) {
-      file.copy(paste0(filepath, "downloads/MHIA Glossary.pdf"), file)
+      file.copy("downloads/MHIA Glossary.pdf", file)
     }
   )
   

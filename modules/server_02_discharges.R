@@ -139,12 +139,13 @@ output$dis_plot <- renderPlotly({
     layout(title = 
              paste0(
                "<b>", 
-               input$dis_measure_type, " in ", input$dis_locations_input, ",",  
+               "Number of ", input$dis_measure_type, 
+               " in ", input$dis_locations_input,",",  
                "<br>", 
+               " by financial year, ",
                first(as.vector(dis_new()$year)), 
                " - ", 
                last(as.vector(dis_new()$year)),
-               ", by financial year",
                "<br>",
                "</b>"
              ),
