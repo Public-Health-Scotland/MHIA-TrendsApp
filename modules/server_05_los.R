@@ -125,10 +125,10 @@ output$los_plot <- renderPlotly({
                else {paste0("Number of stays in any specialty in ")},
                input$los_location_type, ",", 
                "<br>", 
+               " by length of stay category, ",
                first(as.vector(los_new()$fyear)), 
                " - ", 
                last(as.vector(los_new()$fyear)),
-               ", by length of stay category",
                "<br>",
                "</b>"
              ),
