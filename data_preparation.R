@@ -125,6 +125,14 @@ adm_sum_text_2 <- trends_text %>%
   filter(object == "adm_sum_text_2") %>% 
   pull(value)
 
+adm_sum_text_3 <- trends_text %>% 
+  filter(object == "adm_sum_text_3") %>% 
+  pull(value)
+
+adm_sum_text_4 <- trends_text %>% 
+  filter(object == "adm_sum_text_4") %>% 
+  pull(value)
+
 # Discharges summary text ----
 dis_sum_text_1 <- trends_text %>% 
   filter(object == "dis_sum_text_1") %>% 
@@ -134,6 +142,14 @@ dis_sum_text_2 <- trends_text %>%
   filter(object == "dis_sum_text_2") %>% 
   pull(value)
 
+dis_sum_text_3 <- trends_text %>% 
+  filter(object == "dis_sum_text_3") %>% 
+  pull(value)
+
+dis_sum_text_4 <- trends_text %>% 
+  filter(object == "dis_sum_text_4") %>% 
+  pull(value)
+
 # Discharge Type summary text ----
 dis_type_sum_text_1 <- trends_text %>% 
   filter(object == "dis_type_sum_text_1") %>% 
@@ -141,6 +157,10 @@ dis_type_sum_text_1 <- trends_text %>%
 
 dis_type_sum_text_2 <- trends_text %>% 
   filter(object == "dis_type_sum_text_2") %>% 
+  pull(value)
+
+dis_type_sum_text_3 <- trends_text %>% 
+  filter(object == "dis_type_sum_text_3") %>% 
   pull(value)
 
 # Discharge Group summary text ----
@@ -159,6 +179,10 @@ dis_group_sum_text_3 <- trends_text %>%
 # Length of Stay summary text ----
 los_sum_text_1 <- trends_text %>% 
   filter(object == "los_sum_text_1") %>% 
+  pull(value)
+
+los_sum_text_2 <- trends_text %>% 
+  filter(object == "los_sum_text_2") %>% 
   pull(value)
 
 
