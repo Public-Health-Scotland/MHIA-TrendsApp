@@ -22,17 +22,37 @@ h2{
   font-weight: bold;
 }
 
+/* Links */
+a {
+  color: #9B4393;
+  font-weight: bold;
+}
+
+a:hover {
+  color: #3F3685;
+  font-weight: bold;
+}
+
+
+
 /* Buttons */
 .phsButton {
   background-color: #3F3685;
   color: #FFFFFF;
 }
 
+.phsButton:hover {
+  background-color: #FFFFFF;
+  color: #3F3685;
+}
+
 .phsButton:focus {
-    outline-color: transparent;
-    outline-style:solid;
-    box-shadow: 0 0 0 4px #9CC951;
-    transition: 0.7s;
+  background-color: #FFFFFF;
+  color: #3F3685;
+  outline-color: transparent;
+  outline-style:solid;
+  box-shadow: 0 0 0 4px #9CC951;
+  transition: 0.7s;
 }
 
 .btn .btn-primary {
