@@ -1,6 +1,6 @@
 ### UI script ----
 
-# secure_app( #If password protection is needed.
+secure_app( #If password protection is needed.
 fluidPage(
   
   ### 2 - Force desktop version ----
@@ -619,4 +619,4 @@ fluidPage(
   
   ) # Fluid page ends.  ----
 
-# )  # End of password protection. ----
+)  # End of password protection. ----

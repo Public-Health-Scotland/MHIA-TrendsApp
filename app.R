@@ -66,9 +66,9 @@ list.files("functions") %>%
 source("data_preparation.R")
 
 
-##* Read in credentials for password-protecting the app ----
-## Uncomment for PRA
-# credentials <- readRDS("admin/credentials.rds")
+#* Read in credentials for password-protecting the app ----
+# Uncomment for PRA
+credentials <- readRDS("admin/credentials.rds")
 
 
 ####
@@ -92,14 +92,14 @@ ui <- source('ui.R', local = TRUE)$value
 
 server <- function(input, output, session) {
   
-  # # ##* Shinymanager authorisation - password protection ----
-  # res_auth <- secure_server(
-  # check_credentials = check_credentials(credentials)
-  # )
-  # 
-  # output$auth_output <- renderPrint({
-  # reactiveValuesToList(res_auth)
-  # })
+  # ##* Shinymanager authorisation - password protection ----
+  res_auth <- secure_server(
+  check_credentials = check_credentials(credentials)
+  )
+
+  output$auth_output <- renderPrint({
+  reactiveValuesToList(res_auth)
+  })
 
   ## [Source Server files] ----
   ### Admissions server ----
