@@ -28,7 +28,7 @@ fluidPage(
   # These are global attributes, i.e., they will apply to all the page breaks...
   # in the User Interface.
   
-  tags$head(tags$style(HTML("hr { border: 1px solid #000000; }"))),
+  tags$head(tags$style(HTML("hr { border: 1px solid #9F9BC2; }"))),
   
   ### 5 - Title panel ----
   
@@ -38,7 +38,6 @@ fluidPage(
   # Commented out as web page already has a title
   titlePanel(title = div(h1("Mental Health Inpatient Activity: Trends Data"),
                          h2("An Accredited Official Statistics release for Scotland")),
-                         # style = "height:96px;"),
              windowTitle = "Mental health inpatient activity"),
 
   # First page break.
