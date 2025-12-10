@@ -63,13 +63,16 @@ fluidPage(
            
            p("The graphs below present an overview of inpatient and day case admissions and 
              discharges where mental health conditions have been recorded 
-             in Scottish NHS inpatient facilities over time. Data are 
-             included for patients receiving inpatient and day case care in psychiatric facilities 
-             (Scottish Morbidity Record 04, SMR04), excluding those receiving care in 
-             the learning disability specialty (G5), and patients receiving care 
-             as inpatients and day cases in non-psychiatric (acute) facilities 
-             (Scottish Morbidity Record 01, SMR01) where the patient was recorded 
-             as having a mental health condition."),
+             in Scottish NHS inpatient facilities over time, from the Public Health Scotland (PHS) ",
+             tags$a("Mental Health Inpatient Activity publication",
+                    href = "https://publichealthscotland.scot/publications/mental-health-inpatient-activity/",
+                    target = "_blank"),
+             ". Data are included for patients receiving inpatient and day case 
+             care in psychiatric facilities (Scottish Morbidity Record 04, SMR04), 
+             excluding those receiving care in the learning disability specialty (G5), 
+             and patients receiving care as inpatients and day cases in 
+             non-psychiatric (acute) facilities (Scottish Morbidity Record 01, SMR01) 
+             where the patient was recorded as having a mental health condition."),
            
            p("The data can be viewed at a Scotland, Health Board, or hospital level."),
            
