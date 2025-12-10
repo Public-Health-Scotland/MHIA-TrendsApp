@@ -66,12 +66,13 @@ fluidPage(
            
            # Explain the content of the page, and hyperlink the charts.
            
-           p("The graphs below present an overview of inpatient admissions and 
+           p("The graphs below present an overview of inpatient and day case admissions and 
              discharges where mental health conditions have been recorded 
              in Scottish NHS inpatient facilities over time. Data are 
-             included for patients receiving inpatient care in psychiatric facilities 
-             (Scottish Morbidity Record 04, SMR04) and patients receiving care 
-             as inpatients and day cases in non-psychiatric (acute) hospitals 
+             included for patients receiving inpatient and day case care in psychiatric facilities 
+             (Scottish Morbidity Record 04, SMR04), excluding those receiving care in 
+             the learning disability specialty (G5), and patients receiving care 
+             as inpatients and day cases in non-psychiatric (acute) facilities 
              (Scottish Morbidity Record 01, SMR01) where the patient was recorded 
              as having a mental health condition."),
            
@@ -258,7 +259,9 @@ fluidPage(
              p(tags$b("Main trend (Scotland):"),
                tags$ul(
                  tags$li(adm_sum_text_1),
-                 tags$li(adm_sum_text_2)
+                 tags$li(adm_sum_text_2),
+                 tags$li(adm_sum_text_3),
+                 tags$li(adm_sum_text_4)
                )
              ),
              
@@ -346,7 +349,9 @@ fluidPage(
              p(tags$b("Main trend (Scotland):"),
                tags$ul(
                  tags$li(dis_sum_text_1),
-                 tags$li(dis_sum_text_2)
+                 tags$li(dis_sum_text_2),
+                 tags$li(dis_sum_text_3),
+                 tags$li(dis_sum_text_4)
                )
              ),
              
@@ -422,7 +427,8 @@ fluidPage(
              p(tags$b("Main trend (Scotland):"),
                tags$ul(
                  tags$li(dis_type_sum_text_1),
-                 tags$li(dis_type_sum_text_2)
+                 tags$li(dis_type_sum_text_2),
+                 tags$li(dis_type_sum_text_3)
                )
              ),
              
@@ -593,7 +599,8 @@ fluidPage(
              br(),
              p(tags$b("Main trend (Scotland):"),
                tags$ul(
-                 tags$li(los_sum_text_1)
+                 tags$li(los_sum_text_1),
+                 tags$li(los_sum_text_2)
                ),
                
                br(),
