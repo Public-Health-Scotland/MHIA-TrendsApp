@@ -37,8 +37,8 @@ fluidPage(
   
   # Commented out as web page already has a title
   titlePanel(title = div(h1("Mental Health Inpatient Activity: Trends Data"),
-                         h4("An Accredited Official Statistics release for Scotland"),
-                         style = "height:96px;"),
+                         h2("An Accredited Official Statistics release for Scotland")),
+                         # style = "height:96px;"),
              windowTitle = "Mental health inpatient activity"),
 
   # First page break.
@@ -136,12 +136,7 @@ fluidPage(
            
            downloadButton(outputId = "download_glossary_one", 
                           label = "Download glossary", 
-                          class = "glossaryone"),
-           
-           tags$head(
-             tags$style(".glossaryone { background-color: #0072B2; } 
-                        .glossaryone { color: #FFFFFF; }")
-           ),
+                          class = "phsButton"),
            
            br(), 
            br(),

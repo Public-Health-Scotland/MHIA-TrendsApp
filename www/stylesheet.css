@@ -9,3 +9,33 @@ Original Date: December 2025 */
 .shiny-output-error:before {
   visibility: hidden;
 }
+
+h1 {
+  color: #3F3685;
+  font-size: 48px;
+  font-weight: bold;
+}
+
+h2{
+  color: #9B4393;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Buttons */
+.phsButton {
+  background-color: #3F3685;
+  color: #FFFFFF;
+}
+
+.phsButton:focus {
+    outline-color: transparent;
+    outline-style:solid;
+    box-shadow: 0 0 0 4px #9CC951;
+    transition: 0.7s;
+}
+
+.btn .btn-primary {
+  background-color: #3F3685;
+  color: #FFFFFF;
+}
