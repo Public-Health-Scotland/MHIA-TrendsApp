@@ -35,16 +35,16 @@ fluidPage(
   # Open a title panel. Here, you can insert the publication title and specify...
   # the name of the window.
   
-  ## Commented out as web page already has a title
-  # titlePanel(title = div(h1("Mental health inpatient activity"),
-  #                        h4("A National Statistics publication for Scotland"), 
-  #                        style = "height:96px;"),
-  #            windowTitle = "Mental health inpatient activity"),
-  # 
-  # # First page break.
-  # 
-  # hr(),
-  # 
+  # Commented out as web page already has a title
+  titlePanel(title = div(h1("Mental Health Inpatient Activity: Trends Data"),
+                         h4("An Accredited Official Statistics release for Scotland"),
+                         style = "height:96px;"),
+             windowTitle = "Mental health inpatient activity"),
+
+  # First page break.
+
+  hr(),
+
   ### 6 - Main tab ----
   
   # Open a tabPanel(), which will essentially contain all of our output, and...
