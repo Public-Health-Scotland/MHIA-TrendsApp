@@ -3,6 +3,9 @@
 secure_app( #If password protection is needed.
 fluidPage(
   
+  ## load the CSS stylesheet that defines how things look 
+  tags$head(includeCSS("www/stylesheet.css")),
+  
   ### 2 - Force desktop version ----
   
   # The following command forces R to display the desktop version of the page,...
@@ -15,16 +18,8 @@ fluidPage(
   style = "width: 100%; height: 100%; max-width: 1200px;", 
   tags$head( 
     tags$style(
-      type = "text/css",
-      
-      ### 3 - Prevent error messages ----
-      
-      # Prevent error messages from popping up on the interface.
-      
-      ".shiny-output-error { visibility: hidden; }", 
-      ".shiny-output-error:before { visibility: hidden; }"
-      
-    )
+      type = "text/css"
+      )
   ),
   
   ### 4 - Page break style ----

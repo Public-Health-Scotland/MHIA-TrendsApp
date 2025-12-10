@@ -1,0 +1,11 @@
+/* MHIA Trends App Stylesheet
+Author: Alex Bruce
+Original Date: December 2025 */
+
+/* Hide Error Messages */
+.shiny-output-error {
+  visibility: hidden;
+}
+.shiny-output-error:before {
+  visibility: hidden;
+}
