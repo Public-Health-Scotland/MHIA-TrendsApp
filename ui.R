@@ -3,6 +3,9 @@
 secure_app( #If password protection is needed.
 fluidPage(
   
+  ## load the CSS stylesheet that defines how things look 
+  tags$head(includeCSS("www/stylesheet.css")),
+  
   ### 2 - Force desktop version ----
   
   # The following command forces R to display the desktop version of the page,...
@@ -15,16 +18,8 @@ fluidPage(
   style = "width: 100%; height: 100%; max-width: 1200px;", 
   tags$head( 
     tags$style(
-      type = "text/css",
-      
-      ### 3 - Prevent error messages ----
-      
-      # Prevent error messages from popping up on the interface.
-      
-      ".shiny-output-error { visibility: hidden; }", 
-      ".shiny-output-error:before { visibility: hidden; }"
-      
-    )
+      type = "text/css"
+      )
   ),
   
   ### 4 - Page break style ----
@@ -33,23 +28,22 @@ fluidPage(
   # These are global attributes, i.e., they will apply to all the page breaks...
   # in the User Interface.
   
-  tags$head(tags$style(HTML("hr { border: 1px solid #000000; }"))),
+  tags$head(tags$style(HTML("hr { border: 1px solid #9F9BC2; }"))),
   
   ### 5 - Title panel ----
   
   # Open a title panel. Here, you can insert the publication title and specify...
   # the name of the window.
   
-  ## Commented out as web page already has a title
-  # titlePanel(title = div(h1("Mental health inpatient activity"),
-  #                        h4("A National Statistics publication for Scotland"), 
-  #                        style = "height:96px;"),
-  #            windowTitle = "Mental health inpatient activity"),
-  # 
-  # # First page break.
-  # 
-  # hr(),
-  # 
+  # Commented out as web page already has a title
+  titlePanel(title = div(h1("Mental Health Inpatient Activity: Trends Data"),
+                         h2("An Accredited Official Statistics release for Scotland")),
+             windowTitle = "Mental health inpatient activity"),
+
+  # First page break.
+
+  hr(),
+
   ### 6 - Main tab ----
   
   # Open a tabPanel(), which will essentially contain all of our output, and...
@@ -68,13 +62,16 @@ fluidPage(
            
            p("The graphs below present an overview of inpatient and day case admissions and 
              discharges where mental health conditions have been recorded 
-             in Scottish NHS inpatient facilities over time. Data are 
-             included for patients receiving inpatient and day case care in psychiatric facilities 
-             (Scottish Morbidity Record 04, SMR04), excluding those receiving care in 
-             the learning disability specialty (G5), and patients receiving care 
-             as inpatients and day cases in non-psychiatric (acute) facilities 
-             (Scottish Morbidity Record 01, SMR01) where the patient was recorded 
-             as having a mental health condition."),
+             in Scottish NHS inpatient facilities over time, from the Public Health Scotland (PHS) ",
+             tags$a("Mental Health Inpatient Activity publication",
+                    href = "https://publichealthscotland.scot/publications/mental-health-inpatient-activity/",
+                    target = "_blank"),
+             ". Data are included for patients receiving inpatient and day case 
+             care in psychiatric facilities (Scottish Morbidity Record 04, SMR04), 
+             excluding those receiving care in the learning disability specialty (G5), 
+             and patients receiving care as inpatients and day cases in 
+             non-psychiatric (acute) facilities (Scottish Morbidity Record 01, SMR01) 
+             where the patient was recorded as having a mental health condition."),
            
            p("The data can be viewed at a Scotland, Health Board, or hospital level."),
            
@@ -141,12 +138,7 @@ fluidPage(
            
            downloadButton(outputId = "download_glossary_one", 
                           label = "Download glossary", 
-                          class = "glossaryone"),
-           
-           tags$head(
-             tags$style(".glossaryone { background-color: #0072B2; } 
-                        .glossaryone { color: #FFFFFF; }")
-           ),
+                          class = "phsButton"),
            
            br(), 
            br(),

@@ -1,0 +1,69 @@
+/* MHIA Trends App Stylesheet
+Author: Alex Bruce
+Original Date: December 2025 */
+
+/* Hide Error Messages */
+.shiny-output-error {
+  visibility: hidden;
+}
+.shiny-output-error:before {
+  visibility: hidden;
+}
+
+h1 {
+  color: #3F3685;
+  font-size: 48px;
+  font-weight: bold;
+}
+
+h2{
+  color: #9B4393;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+/* Links */
+a {
+  color: #9B4393;
+  font-weight: bold;
+}
+
+a:hover {
+  color: #3F3685;
+  font-weight: bold;
+}
+
+a:focus {
+  color: #3F3685;
+  outline-color: transparent;
+  outline-style:solid;
+  box-shadow: 0 0 0 2px #9CC951;
+  transition: 0.7s;
+}
+
+
+
+/* Buttons */
+.phsButton {
+  background-color: #3F3685;
+  color: #FFFFFF;
+}
+
+.phsButton:hover {
+  background-color: #FFFFFF;
+  color: #3F3685;
+}
+
+.phsButton:focus {
+  background-color: #FFFFFF;
+  color: #3F3685;
+  outline-color: transparent;
+  outline-style:solid;
+  box-shadow: 0 0 0 4px #9CC951;
+}
+
+.btn .btn-primary {
+  background-color: #3F3685;
+  color: #FFFFFF;
+}
