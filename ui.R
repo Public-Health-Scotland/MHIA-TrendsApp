@@ -1,6 +1,7 @@
-### UI script ----
+#### UI script ####
 
-secure_app( #If password protection is needed.
+#* Begin password protection ----
+# secure_app( # Uncomment if password protection is needed
 fluidPage(
   
   ## load the CSS stylesheet that defines how things look 
@@ -611,4 +612,5 @@ fluidPage(
   
   ) # Fluid page ends.  ----
 
-)  # End of password protection. ----
+#* End of password protection ----
+# ) # Uncomment if password protection is needed
