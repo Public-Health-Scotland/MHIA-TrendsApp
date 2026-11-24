@@ -34,7 +34,6 @@
 ###
 
 ## Load necessary libraries ----
-
 library("shiny") # interactivity
 library("readr") # read in rds files
 library("dplyr") # easier variable manipulation
@@ -51,13 +50,22 @@ library('shinycssloaders')
 library("shinymanager") # apply password protection to the app
 
 
-## Load setup files ----
+## Define variables ----
 
-# Source functions created for app (see functions folder)
+### Publication Date variable ----
+# MUST BE UPDATED EACH TIME WE PUBLISH
+pub_date <- "2026_December"
+
+### min and max fyears ---- 
+# updates max fyear based on pub_date above
+min_fyear <- 1997
+max_fyear <- as.numeric(substr(pub_date,1,4)) - 1
+
+## Source functions ----
 list.files("functions") %>%
   map(~ source(paste0("functions/", .)))
 
-# Source data
+## Source data ----
 source("data_preparation.R")
 
 

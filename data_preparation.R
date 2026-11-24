@@ -5,15 +5,6 @@
 #############################################################
 
 
-### 1 -  Publication Date variable to define file3path ----
-# MUST BE UPDATED EACH TIME WE PUBLISH
-pub_date <- "2025_December"
-
-### 2 - Define min and max years ---- 
-# must be updated each time we publish 
-min_year <- 1997
-max_year <- 2024
-
 ### File Imports & transformations ----
 
 ### Trend Data - Discharges & Admissions ----
