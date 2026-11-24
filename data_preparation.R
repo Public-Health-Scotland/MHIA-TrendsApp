@@ -1,13 +1,10 @@
-#############################################################
-
+####
 # DATA MANIPULATION ----
+###
 
-#############################################################
+# [ File Imports & transformations ] ----
 
-
-### File Imports & transformations ----
-
-### Trend Data - Discharges & Admissions ----
+## Trend Data - Discharges & Admissions ----
 
 # Import the file that will be used to create the admission and discharge graphs.
 activity.by.hospital <- read_rds(
@@ -45,7 +42,7 @@ act_disch_measures <- activity.discharges %>% distinct(Trend_Type) %>%
   pull(Trend_Type)
 
 
-### Trend Data - Discharge Type ----
+## Trend Data - Discharge Type ----
 
 # Read in the discharge_type data
 activity.dis.type <- read_rds(
@@ -54,7 +51,7 @@ activity.dis.type <- read_rds(
 # Store certain variables in each dataset as objects, to be used as selections...
 # in the app's filters.
 
-# Scotland data
+### Scotland data ----
 activity.dis.type.scot <- activity.dis.type %>% 
   filter(dis_type_group == "Scotland")
 
@@ -68,7 +65,7 @@ dis.type.location.scot <- activity.dis.type.scot %>%
   distinct(hbtreat_name) %>% pull(hbtreat_name)
 
 
-# HB data
+### HB data ----
 activity.dis.type.hb <- activity.dis.type %>% 
   filter(dis_type_group != "Scotland")
 
@@ -82,7 +79,7 @@ dis.type.location.hb <- activity.dis.type.hb %>%
   distinct(hbtreat_name) %>% pull(hbtreat_name)
 
 
-### Trend Data - Length of Stay ----
+## Trend Data - Length of Stay ----
 
 # Now import the file that will be used to create the length of stay graph.
 length.of.stay <- read_rds(
@@ -102,12 +99,12 @@ los_measures <- length.of.stay %>%
   mutate(Stay_Specialty = as.character(Stay_Specialty)) %>% pull(Stay_Specialty)
 
 
-### Summary text extraction ----
+# [ Summary text extraction ] ----
 
 ## Load Text File
 trends_text <- read.csv("data/trends_app_text.csv")
 
-# Admissions summary text ----
+## Admissions summary text ----
 adm_sum_text_1 <- trends_text %>% 
   filter(object == "adm_sum_text_1") %>% 
   pull(value)
@@ -124,7 +121,7 @@ adm_sum_text_4 <- trends_text %>%
   filter(object == "adm_sum_text_4") %>% 
   pull(value)
 
-# Discharges summary text ----
+## Discharges summary text ----
 dis_sum_text_1 <- trends_text %>% 
   filter(object == "dis_sum_text_1") %>% 
   pull(value)
@@ -141,7 +138,7 @@ dis_sum_text_4 <- trends_text %>%
   filter(object == "dis_sum_text_4") %>% 
   pull(value)
 
-# Discharge Type summary text ----
+## Discharge Type summary text ----
 dis_type_sum_text_1 <- trends_text %>% 
   filter(object == "dis_type_sum_text_1") %>% 
   pull(value)
@@ -154,7 +151,7 @@ dis_type_sum_text_3 <- trends_text %>%
   filter(object == "dis_type_sum_text_3") %>% 
   pull(value)
 
-# Discharge Group summary text ----
+## Discharge Group summary text ----
 dis_group_sum_text_1 <- trends_text %>% 
   filter(object == "dis_group_sum_text_1") %>% 
   pull(value)
@@ -167,7 +164,7 @@ dis_group_sum_text_3 <- trends_text %>%
   filter(object == "dis_group_sum_text_3") %>% 
   pull(value)
 
-# Length of Stay summary text ----
+## Length of Stay summary text ----
 los_sum_text_1 <- trends_text %>% 
   filter(object == "los_sum_text_1") %>% 
   pull(value)
