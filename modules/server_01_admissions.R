@@ -92,7 +92,7 @@ output$adm_plot <- renderPlotly({
     # hover your mouse over a dot in the admissions graph.
     
     tooltip_adm <- paste0("Financial year: ", 
-                          adm_new()$year, "<br>",
+                          adm_new()$fyear, "<br>",
                           "Health board of treatment: ",
                           adm_new()$hbtreat_name, "<br>",
                           "Hospital: ",
@@ -107,7 +107,7 @@ output$adm_plot <- renderPlotly({
             
             # Select your variables.
             
-            x = ~year, y = ~Number, color = ~hospital_name,
+            x = ~fyear, y = ~Number, color = ~hospital_name,
             
             ### 5 - Line colour ----
             
@@ -142,9 +142,9 @@ output$adm_plot <- renderPlotly({
                " in ", input$adm_location, ",",
                "<br>",
                " by financial year, ",
-               first(as.vector(adm_new()$year)), 
+               first(as.vector(adm_new()$fyear)), 
                " - ", 
-               last(as.vector(adm_new()$year)),
+               last(as.vector(adm_new()$fyear)),
                
                "<br>",
                "</b>"
