@@ -193,27 +193,21 @@ fluidPage(
            
            # Insert the reactive filters for the admissions graph.
            
-           column(3,
-                  
+           column(4,
                   uiOutput("adm_location_types")
-                  
            ),
            
-           column(3, 
-                  
+           column(4, 
                   uiOutput("adm_locations")
-                  
            ),
            
-           column(3,
-                  
+           column(4,
                   shinyWidgets::pickerInput(
                     inputId = "adm_measure_type",
                     label = "Select measure", 
                     choices = act_adm_measures, 
                     selected = "Admissions in any specialty"
                   )
-                  
            ),
            
            ### 1.3 - Insert Admissions graph ----
@@ -277,27 +271,21 @@ fluidPage(
              
              ### 2.2 - Reactive filters for the discharges graph ----
              
-             column(3,
-                    
+             column(4,
                     uiOutput("dis_loc_type_output")
-                    
              ),
              
-             column(3, 
-                    
+             column(4, 
                     uiOutput("dis_locations_output")
-                    
              ),
              
-             column(3,
-                    
+             column(4,
                     shinyWidgets::pickerInput(
                       inputId = "dis_measure_type",
                       label = "Select measure", 
                       choices = act_disch_measures, 
                       selected = "Discharges from any specialty"
                     )
-                    
              ),
              
              br(),
