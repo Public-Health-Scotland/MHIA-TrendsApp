@@ -1,18 +1,16 @@
-#### UI script ####
+# UI script #
 
-#* Begin password protection ----
+# [ Admin ] ----
+
+## * Begin password protection ----
 # secure_app( # Uncomment if password protection is needed
 fluidPage(
   
-  ## load the CSS stylesheet that defines how things look 
+  ## Load the CSS stylesheet ----
+  # This defines how the app looks
   tags$head(includeCSS("www/stylesheet.css")),
   
-  ### 2 - Force desktop version ----
-  
-  # The following command forces R to display the desktop version of the page,...
-  # no matter what device the user has (mobile phone, tablet, desktop, etc).
-  # This is a temporary solution until we develop a Shiny app that's...
-  # optimised for mobile devices.
+  ## Force desktop version ----
   
   HTML('<meta name="viewport" content="width=1200">'),
   
@@ -23,29 +21,30 @@ fluidPage(
       )
   ),
   
-  ### 4 - Page break style ----
+  ## Page break style ----
   
   # Style the horizontal line that you will be using below as a page break.
-  # These are global attributes, i.e., they will apply to all the page breaks...
+  # These are global attributes, i.e., they will apply to all the page breaks
   # in the User Interface.
   
   tags$head(tags$style(HTML("hr { border: 1px solid #9F9BC2; }"))),
   
-  ### 5 - Title panel ----
   
-  # Open a title panel. Here, you can insert the publication title and specify...
+  # [ Title panel ] ----
+  
+  # Open a title panel. Here, you can insert the publication title and specify
   # the name of the window.
   
-  # Commented out as web page already has a title
+  ## Comment out if dashboard is embedded in website ----
   titlePanel(title = div(h1("Mental Health Inpatient Activity: Trends Data"),
                          h2("An Accredited Official Statistics release for Scotland")),
              windowTitle = "Mental health inpatient activity"),
 
-  # First page break.
-
+  # First page break
   hr(),
 
-  ### 6 - Main tab ----
+  
+  # [ Main tab ] ----
   
   # Open a tabPanel(), which will essentially contain all of our output, and...
   # give it a title with h1.
@@ -55,9 +54,10 @@ fluidPage(
            style = "float: top; height: 95%; width: 95%;
            background-color: #FFFFFF; border: 0px solid #FFFFFF;",
            
+           ## Uncomment if dashboaard is embedded ----
            # h1(tags$b("Trend data"), id = 'Top'),
            
-           ### 7 - Page content explanation and Contents hyperlinks ----
+           ## Page content explanation and Contents hyperlinks ----
            
            # Explain the content of the page, and hyperlink the charts.
            
@@ -93,7 +93,7 @@ fluidPage(
              )
            ),
            
-           ### 8 - Page explanation text ----
+           ## Page explanation text ----
            
            # Explain how to use the various functions on this page.
            
@@ -124,14 +124,12 @@ fluidPage(
                      default range.")
            ),
            
-           ### 9 ---
+           ## Glossary ----
            
            # Inform users that we have created a glossary for them, and insert...
            # a download button for it.
-           # Also, inform them of the existence of a data explorer. 
            # Then, provide the contact details of the team.
-           # Finally, insert the standard note regarding statistical disclosure...
-           # control.
+           # Finally, insert the standard note regarding statistical disclosure control.
            
            p("To help you understand the information visualised here, we have 
              created a glossary of commonly used terms in mental health care. 
@@ -176,20 +174,16 @@ fluidPage(
            
            p(""),
            
-           #Second page break.
-           
+           # Page break
            hr(),
            
            
-           #### [[ Graph Visualisaitons ]] ####
+           # [[ Graph Visualisaitons ]] ----
            
            
-           #### [ Admissions ] ####
-           
+           ## [ Admissions ] ----
            
            ### 1.1 - Admissions graph header ----
-           
-           # Provide a header for the admissions graph.
            
            h3("Admissions", id = 'admissions_link'),
            
@@ -262,21 +256,18 @@ fluidPage(
              
              ### 1.5 - Back to top button ----
              
-             # Add a button that allows the user to go back to the top of the...
-             # page.
-             
+             # Add a button that allows the user to go back to the top of the page
              tags$a(href = '#Top', 
                     icon("circle-arrow-up", 
                          lib = "glyphicon"), 
                     "Back to top"),
              
-             # Third page break.
-             
+             # Page break
              hr(),
              
              
              
-             #### [ Discharges ] ####
+             ## [ Discharges ] ----
              
              ### 2.1 - Header for the discharges graph ----
              
@@ -350,19 +341,17 @@ fluidPage(
              
              br(),
              
-             # Another 'Back to top' button.
-             
+             # 'Back to top' button
              tags$a(href = '#Top',  
                     icon("circle-arrow-up", 
                          lib = "glyphicon"), 
                     "Back to top"),
              
-             # Fourth page break.
-             
+             # Page break
              hr(),
              
              
-             ####  [ Discharge Types Scot]  ####
+             ## [ Discharge Types Scot] ----
              
              ### 3.1 - Discharge Types Scot header ----
              
@@ -372,7 +361,7 @@ fluidPage(
              
              ### 3.2 - Reactive filters ----
              
-             # Insert the reactive filters for the discharge types graph.
+             # Insert the reactive filters for the discharge types graph
              
              column(12, 
                     shinyWidgets::pickerInput(
@@ -394,8 +383,8 @@ fluidPage(
              
              ### 3.3 - Insert discharge type graph ----
              
-             # In the main panel of the discharges graph, insert the graph, the...
-             # 'Show/hide table' button, and the discharges table.
+             # In the main panel of the discharges graph, insert the graph, the
+             # 'Show/hide table' button, and the discharges table
              
              phs_spinner("dis_type_scot_plot"),
              br(),
@@ -412,8 +401,8 @@ fluidPage(
              
              ### 3.4 - Discharge type main points ----
              
-             # Write a main point for Scotland, i.e., summarise the "story"...
-             # behind the discharges graph.
+             # Write a main point for Scotland, i.e., summarise the "story"
+             # behind the discharges graph
              
              br(),
              br(),
@@ -427,18 +416,17 @@ fluidPage(
              
              br(),
              
-             # Another 'Back to top' button.
-             
+             # 'Back to top' button
              tags$a(href = '#Top',  
                     icon("circle-arrow-up", 
                          lib = "glyphicon"), 
                     "Back to top"),
              
-             # fourth page break.
-             
+             # Page break
              hr(),
              
-             ####  [ Discharge Groups HB]  ####
+             
+             ##  [ Discharge Groups HB] ----
              
              ### 3.1 - Discharge Groups HB header ----
              
@@ -479,8 +467,8 @@ fluidPage(
              
              ### 3.3 - Insert discharge group graph ----
              
-             # In the main panel of the discharges graph, insert the graph, the...
-             # 'Show/hide table' button, and the discharges table.
+             # In the main panel of the discharges graph, insert the graph, the
+             # 'Show/hide table' button, and the discharges table
              
              phs_spinner("dis_group_hb_plot"),
              br(),
@@ -497,8 +485,8 @@ fluidPage(
              
              ### 3.4 - Discharge group main points ----
              
-             # Write a main point for Scotland, i.e., summarise the "story"...
-             # behind the discharges graph.
+             # Write a main point for Scotland, i.e., summarise the "story"
+             # behind the discharges graph
              
              br(),
              br(),
@@ -512,24 +500,21 @@ fluidPage(
              
              br(),
              
-             # Another 'Back to top' button.
-             
+             # 'Back to top' button
              tags$a(href = '#Top',  
                     icon("circle-arrow-up", 
                          lib = "glyphicon"), 
                     "Back to top"),
              
-             # fourth page break.
-             
+             # Page break
              hr(),
              
              
-             #### [ Length of Stay ] ####
+             ## [ Length of Stay ] ----
              
              ### 4.1 - LoS Graph header ----
              
-             # Header for the length of stay graph.
-             
+             # Header for the length of stay graph
              p(h3("Length of stay", id = 'los_link')),
              
              br(),
@@ -567,8 +552,8 @@ fluidPage(
              
              ### 4.3 - Insert LoS Graph ----
              
-             # In the main panel of the length of stay graph, insert the graph,...
-             # the 'Show/hide table' button, and the length of stay table.
+             # In the main panel of the length of stay graph, insert the graph,
+             # the 'Show/hide table' button, and the length of stay table
              
              phs_spinner("los_plot"),
              br(),
@@ -585,8 +570,8 @@ fluidPage(
              
              ### 4.4 - LoS Main Point ----
              
-             # Write a main point for Scotland, i.e., summarise the "story"...
-             # behind the length of stay graph.
+             # Write a main point for Scotland, i.e., summarise the "story"
+             # behind the length of stay graph
              
              br(),
              br(),
@@ -598,7 +583,7 @@ fluidPage(
                
                br(),
                
-               # Final 'back to top' button.
+               # 'back to top' button
                
                tags$a(href = '#Top',  
                       icon("circle-arrow-up", 
@@ -612,5 +597,5 @@ fluidPage(
   
   ) # Fluid page ends.  ----
 
-#* End of password protection ----
+# * End of password protection ----
 # ) # Uncomment if password protection is needed
