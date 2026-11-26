@@ -351,7 +351,8 @@ fluidPage(
              
              # Insert the reactive filters for the discharge types graph
              
-             column(12, 
+             #### Discharge type picker ----
+             column(4, 
                     shinyWidgets::pickerInput(
                       inputId = "dis_type_scot_input",
                       label = "Select discharge type(s) (Maximum 4)",
@@ -361,7 +362,14 @@ fluidPage(
                                      `selected-text-format` = "count > 1"),
                       selected = "10 - Regular discharge (No additional detail added)")
              ),
-             
+             #### Measures picker ----
+             column(4, 
+                    shinyWidgets::pickerInput(
+                      inputId = "dis_type_scot_measure_input",
+                      label = "Select measure",
+                      choices = dis.type.measure,
+                      selected = "Number of discharges")
+             ),
              
              br(),
              br(),
