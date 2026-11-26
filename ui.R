@@ -434,7 +434,7 @@ fluidPage(
              ### 3.2 - Reactive filters ----
              
              # Insert the reactive filters for the discharge types graph.
-             
+             #### HB picker ----
              column(4, 
                     shinyWidgets::pickerInput(
                       inputId = "dis_group_location_input",
@@ -443,6 +443,7 @@ fluidPage(
                       selected = "NHS Ayrshire & Arran")
              ),
              
+             #### Dis type group picker ----
              column(4, 
                     shinyWidgets::pickerInput(
                       inputId = "dis_group_hb_input",
@@ -452,6 +453,15 @@ fluidPage(
                       options = list("max-options" = 3,
                                      `selected-text-format` = "count > 1"),
                       selected = "Regular Discharge")
+             ),
+             
+             #### Measures picker ----
+             column(4, 
+                    shinyWidgets::pickerInput(
+                      inputId = "dis_type_hb_measure_input",
+                      label = "Select measure",
+                      choices = dis.type.measure,
+                      selected = "Number of discharges")
              ),
              
              
