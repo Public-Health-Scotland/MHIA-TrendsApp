@@ -1,19 +1,20 @@
-########### [ Discharge Groups ] ############# 
+# [ Discharge Groups ] #
 
-### 1 - Create data for chart ----
+# Create data for chart ----
 dis_group_hb_new <- reactive({
   activity.dis.type.hb %>%
     filter(hbtreat_name %in% input$dis_group_location_input
-           & dis_type_group %in% input$dis_group_hb_input)
+           & dis_type_group %in% input$dis_group_hb_input
+           & measure %in% input$dis_type_hb_measure_input)
 })
 
 
-# Create the discharges line chart.
+# Create the discharges line chart ----
 output$dis_group_hb_plot <- renderPlotly({
   
-  ### 2 - Account for charts with no admissions ----
-  if(sum(dis_group_hb_new()$DischargeTypeTotal) == 0 & 
-     !is.na(sum(dis_group_hb_new()$DischargeTypeTotal))) 
+  ## Account for charts with no admissions ----
+  if(sum(dis_group_hb_new()$value) == 0 & 
+     !is.na(sum(dis_group_hb_new()$value))) 
     
   { 
     
@@ -47,18 +48,18 @@ output$dis_group_hb_plot <- renderPlotly({
   
   else {
     
-    ### 4 - Tooltip creation ----
+    ## Tooltip creation ----
     tooltip_dis_group_hb <- paste0("Financial year: ", 
                                    dis_group_hb_new()$fyear, "<br>",
                                    "Discharge type: ",
                                    input$dis_group_hb_input, "<br>",
-                                   "Value: ",
-                                   dis_group_hb_new()$DischargeTypeTotal)
+                                   input$dis_type_hb_measure_input, ": ",
+                                   dis_group_hb_new()$value)
     
-    ### 5 - Create the main body of the chart ----
+    ## Create the main body of the chart ----
     plot_ly(data = dis_group_hb_new(), 
             x = ~fyear, 
-            y = ~DischargeTypeTotal, 
+            y = ~value, 
             color = ~dis_type_group,
             colors = c("#4CBEED", "#004785", "#4CBEED", "#004785"),
             type = 'scatter', mode = 'lines+markers',
@@ -76,14 +77,23 @@ output$dis_group_hb_plot <- renderPlotly({
             name = ~str_wrap(discharge_type, 26)) %>%
       
       
-      ### 5 - Graph title ----
+      ###  Reactive graph title ----
     layout(title =
              paste0(
                "<b>",
-               "Discharge type: ",
-               input$dis_group_hb_input, ", in ",
-               input$dis_group_location_input, ",",
-               "<br>",
+               if_else(input$dis_type_hb_measure_input == "Number of discharges",
+                       "Number of discharges with the ",
+                       paste0("Percentage of total discharges for ",
+                              input$dis_group_location_input,
+                              " with ")),
+               "discharge type: ",
+               input$dis_group_hb_input, ", ",
+               if_else(input$dis_type_hb_measure_input == "Number of discharges",
+                       paste0("<br>", " in ", input$dis_group_location_input, ","),
+                       paste0("", "<br>")),
+               
+               # input$dis_group_location_input, ",",
+               
                " by financial year, ",
                first(as.vector(dis_group_hb_new()$fyear)),
                " - ",
@@ -94,7 +104,7 @@ output$dis_group_hb_plot <- renderPlotly({
            
            separators = ".",
            
-           ### 6 - Set y axis min range to Zero ----
+           ### Set y axis min range to Zero ----
            
            # We need to fix the range of the y axis, as R refuses to set...
            # the lower end of this axis to zero.
@@ -108,11 +118,11 @@ output$dis_group_hb_plot <- renderPlotly({
              
              separatethousands = TRUE,
              
-             range = c(0, max(dis_group_hb_new()$DischargeTypeTotal, na.rm = TRUE) +
-                         (max(dis_group_hb_new()$DischargeTypeTotal, na.rm = TRUE)
+             range = c(0, max(dis_group_hb_new()$value, na.rm = TRUE) +
+                         (max(dis_group_hb_new()$value, na.rm = TRUE)
                           * 10 / 100)),
              
-             ### 7 - Axes titles ----
+             ### Axes titles ----
              
              # Wrap the y axis title in blank spaces so it doesn't...
              # overlap with the y axis tick labels.
@@ -120,7 +130,7 @@ output$dis_group_hb_plot <- renderPlotly({
              
              title = paste0(c(
                rep("&nbsp;", 20),
-               "Number of Discharges",
+               input$dis_type_hb_measure_input,
                rep("&nbsp;", 20),
                rep("\n&nbsp;", 3)),
                collapse = ""),
@@ -145,21 +155,21 @@ output$dis_group_hb_plot <- renderPlotly({
                         showline = TRUE,
                         ticks = "outside"),
            
-           ### 8 - Marigns ----
+           ### Marigns ----
            margin = list(l = 90, r = 60, b = 180, t = 120),
            
-           ### 9 - Font sizes ----
+           ### Font sizes ----
            font = list(size = 13),
            title = list(size = 15),
            
-           ### 10 - Legend ----
+           ### Legend ----
            showlegend = TRUE,
            legend = list(x = 1,
                          y = 1,
                          bgcolor = 'rgba(255, 255, 255, 0)',
                          bordercolor = 'rgba(255, 255, 255, 0)')) %>%
       
-      ### 11 - Remove unnecessary buttons from the modebar ----
+      ### Remove unnecessary buttons from the modebar ----
     config(displayModeBar = TRUE,
            modeBarButtonsToRemove = list('select2d', 'lasso2d', 'zoomIn2d',
                                          'zoomOut2d', 'autoScale2d',
@@ -172,7 +182,7 @@ output$dis_group_hb_plot <- renderPlotly({
   
 })
 
-### 12 - Table below graph creation ----
+## Table below graph creation ----
 
 output$dis_group_hb_table <- renderDataTable({
   datatable(dis_group_hb_new(), 
@@ -184,5 +194,6 @@ output$dis_group_hb_table <- renderDataTable({
                          "Health board of treatment", 
                          "Discharge type",
                          "Discharge type group",
+                         "Measure",
                          "Value"))
 })

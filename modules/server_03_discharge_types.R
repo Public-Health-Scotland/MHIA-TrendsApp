@@ -1,8 +1,8 @@
-########### [ Discharges Types ] ############# 
+# [ Discharges Types ] ----
 
 # We continue with the discharge type graph.
 
-### 1 - Dynamic filters ----
+## Dynamic filters ----
 
 # The reactive() command below creates a subset of the discharge type dataset...
 # based on the user's selection.
@@ -10,20 +10,21 @@
 
 dis_type_scot_new <- reactive({
   activity.dis.type.scot %>%
-    filter(discharge_type %in% input$dis_type_scot_input)
+    filter(discharge_type %in% input$dis_type_scot_input 
+           & measure %in% input$dis_type_scot_measure_input)
   
 })
 
 
-# Create the discharges line chart.
+## Discharge types line chart ----
 output$dis_type_scot_plot <- renderPlotly({
   
-  if(sum(dis_type_scot_new()$DischargeTypeTotal) == 0 & 
-     !is.na(sum(dis_type_scot_new()$DischargeTypeTotal))) 
+  if(sum(dis_type_scot_new()$value) == 0 & 
+     !is.na(sum(dis_type_scot_new()$value))) 
     
   { 
     
-    ### 2 - Account for charts with no admissions ----
+    ### Account for charts with no admissions ----
     
     # Account for the possibility that a hospital had no discharges.
     # Create a message for this.
@@ -55,7 +56,7 @@ output$dis_type_scot_plot <- renderPlotly({
   
   else {
     
-    ### 3 - Tooltip creation ----
+    ### Tooltip creation ----
     
     # Create the tooltip, i.e., insert the information that appears when you...
     # hover your mouse over a dot in the discharges graph.
@@ -64,16 +65,16 @@ output$dis_type_scot_plot <- renderPlotly({
                                     dis_type_scot_new()$fyear, "<br>",
                                     "Discharge type: ",
                                     input$dis_type_scot_input, "<br>",
-                                    "Value: ",
-                                    dis_type_scot_new()$DischargeTypeTotal)
+                                    input$dis_type_scot_measure_input,": ",
+                                    dis_type_scot_new()$value)
     
-    ### 4 - Create the main body of the chart ----
+    ### Create the main body of the chart ----
     
     plot_ly(data = dis_type_scot_new(), 
             
             # Select your variables.
             
-            x = ~fyear, y = ~DischargeTypeTotal, color = ~discharge_type,
+            x = ~fyear, y = ~value, color = ~discharge_type,
             
             colors = c("#4CBEED", "#004785"),
             type = 'scatter', mode = 'lines+markers',
@@ -90,9 +91,8 @@ output$dis_type_scot_plot <- renderPlotly({
             text = tooltip_dis_type_scot, hoverinfo = "text",
             name = ~str_wrap(discharge_type, 26)) %>%
       
-      ### 5 - Graph title ----
-    
-    # Make the graph title reactive.
+      
+      ### Reactive Graph title ----
     
     layout(title =
              paste0(
@@ -111,7 +111,7 @@ output$dis_type_scot_plot <- renderPlotly({
            
            separators = ".",
            
-           ###  - Set y axis min range to Zero ----
+           ###  Set y axis min range to Zero ----
            
            # We need to fix the range of the y axis, as R refuses to set...
            # the lower end of this axis to zero.
@@ -125,11 +125,11 @@ output$dis_type_scot_plot <- renderPlotly({
              
              separatethousands = TRUE,
              
-             range = c(0, max(dis_type_scot_new()$DischargeTypeTotal, na.rm = TRUE) +
-                         (max(dis_type_scot_new()$DischargeTypeTotal, na.rm = TRUE)
+             range = c(0, max(dis_type_scot_new()$value, na.rm = TRUE) +
+                         (max(dis_type_scot_new()$value, na.rm = TRUE)
                           * 10 / 100)),
              
-             ### - Axes titles ----
+             ### Axes titles ----
              
              # Wrap the y axis title in blank spaces so it doesn't...
              # overlap with the y axis tick labels.
@@ -137,7 +137,8 @@ output$dis_type_scot_plot <- renderPlotly({
              
              title = paste0(c(
                rep("&nbsp;", 20),
-               "Number of Discharges",
+               # Take name from the measure selector
+               input$dis_type_scot_measure_input,
                rep("&nbsp;", 20),
                rep("\n&nbsp;", 3)),
                collapse = ""),
@@ -162,19 +163,19 @@ output$dis_type_scot_plot <- renderPlotly({
                         showline = TRUE,
                         ticks = "outside"),
            
-           ### 10 - Marigns ----
+           ### Marigns ----
            
            # Fix the margins so that the graph and axis titles have enough...
            # room to display nicely.
            
            margin = list(l = 90, r = 60, b = 180, t = 120),
            
-           ### 11 - Font sizes ----
+           ### Font sizes ----
            
            font = list(size = 13),
            title = list(size = 15),
            
-           ### 12 - Legend ----
+           ### Legend ----
            
            # Insert a legend so that the user knows which discharge type 
            # they are looking at.
@@ -186,7 +187,7 @@ output$dis_type_scot_plot <- renderPlotly({
                          bgcolor = 'rgba(255, 255, 255, 0)',
                          bordercolor = 'rgba(255, 255, 255, 0)')) %>%
       
-      ### 13 - Remove unnecessary buttons from the modebar ----
+      ### Remove unnecessary buttons from the modebar ----
     
     config(displayModeBar = TRUE,
            modeBarButtonsToRemove = list('select2d', 'lasso2d', 'zoomIn2d',
@@ -200,7 +201,7 @@ output$dis_type_scot_plot <- renderPlotly({
   
 })
 
-### 14 - Reactive to subset data for table below graph ----
+## Reactive to subset data for table below graph ----
 
 # This reactive() creates the subset that will be used to create the table...
 # appearing under the discharges chart.
@@ -210,7 +211,7 @@ output$dis_type_scot_plot <- renderPlotly({
 # not necessary, use the same table used to produce the plot
 
 
-### 15 - Table below graph creation ----
+## Table below graph creation ----
 
 # We now create the table that will go under the discharges line chart.
 # We give the columns clearer names.
@@ -227,5 +228,6 @@ output$dis_type_scot_table <- renderDataTable({
                          "Health board of treatment", 
                          "Discharge type",
                          "Discharge type group",
+                         "Measure",
                          "Value"))
 })

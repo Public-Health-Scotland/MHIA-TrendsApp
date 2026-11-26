@@ -51,6 +51,9 @@ activity.dis.type <- read_rds(
 # Store certain variables in each dataset as objects, to be used as selections...
 # in the app's filters.
 
+dis.type.measure <- activity.dis.type %>% 
+  distinct(measure) %>% pull(measure)
+
 ### Scotland data ----
 activity.dis.type.scot <- activity.dis.type %>% 
   filter(dis_type_group == "Scotland")
